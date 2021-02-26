@@ -58,13 +58,34 @@ RESTful includes the word REST, which stands for **re**presentational **s**tate 
     </dependency>
     ```
 
-2. Use ```BufferedReader``` which comes already bundled with your JDK, ```InputStreamReader```,  ```CloseableHttpClient```, ```HttpGet``` and ```HttpResponse``` from the maven dependency `org.apache.httpcomponents` you've just included to call any website ([simple, primitive Web 1.0 website examples](https://gizmodo.com/23-ancient-web-sites-that-are-still-alive-5960831)) and return the HTTP response in the terminal.
-3. Read through [all HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) and write down what they request, if their request has a body and if their response has a body
+2. Use ```BufferedReader``` and ```InputStreamReader``` which come already bundled with your JDK, ```CloseableHttpClient```, ```HttpGet``` and ```HttpResponse``` from the maven dependency `org.apache.httpcomponents` you've just included to call any website ([simple, primitive Web 1.0 website examples](https://gizmodo.com/23-ancient-web-sites-that-are-still-alive-5960831)) and return the HTTP response in the terminal.
 
-## WIP Exercise 02: Docker Basics & MariaDB Image
+## Exercise 02: Sending JSON with HTTP POST
+
+### Doing
+
+1. Read through [all HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) and write down what they request, if their request has a body and if their response has a body
+2. Create a maven project with the following two dependencies:
+    ```xml
+    <dependencies>
+      <dependency>
+        <groupId>org.apache.httpcomponents</groupId>
+        <artifactId>httpclient</artifactId>
+        <version>4.5.13</version>
+      </dependency>
+      <dependency>
+        <groupId>org.json</groupId>
+        <artifactId>json</artifactId>
+        <version>20201115</version>
+      </dependency>
+    </dependencies>
+    ```
+3. Use `JSONObject` from `org.json`, `HttpPost`, `HttpResponse`,` HttpHeaders`, `CloseableHttpClient`, `StringEntity` from `org.apache.httpcomponents` and `BufferedReader` and `InputStreamReader` from your JDK to send a HTTP Post request to `https://jsonplaceholder.typicode.com/posts` which includes a JSON string including the `title` and `body` property from this resource and print out the response in the terminal.
+
+## WIP Exercise 03: Docker Basics & MariaDB Image
 
 ### WIP Docker Basics
 
 ### WIP MariaDB with XAMPP
 
-## WIP Exercise 03: Spring Boot Basics
+## WIP Exercise 04: Spring Boot Basics
