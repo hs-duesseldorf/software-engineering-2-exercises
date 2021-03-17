@@ -44,9 +44,6 @@ As you can see from the `content-type` property of the response header, HTTP mes
 - [JSON](https://en.wikipedia.org/wiki/JSON)
 - regular text
 
-Another very popular use of HTTP in addition to reading websites is to build RESTful webservices that can be consumed by client applications, like for example a mobile app.
-RESTful includes the word REST, which stands for **re**presentational **s**tate **t**ransfer, and the suffix `ful`, which spoilers the fact that RESTful webservices can be less or more RESTful depending on how much they follow the REST standard.
-
 ### Doing
 
 1. Create a Maven project and include the following dependencies in your ```pom.xml```: 
@@ -62,6 +59,12 @@ RESTful includes the word REST, which stands for **re**presentational **s**tate 
 
 ## Exercise 02: Sending JSON with HTTP POST
 
+Another very popular use of HTTP in addition to reading websites is to build RESTful webservices that can be consumed by client applications, like for example a mobile app.
+RESTful includes the word REST, which stands for **re**presentational **s**tate **t**ransfer, and the suffix `ful`, which spoilers the fact that RESTful webservices can be less or more RESTful depending on how much they follow the REST standard and its [constraints](https://en.wikipedia.org/wiki/Representational_state_transfer).
+
+RESTful APIs focus on resrouces, whichs data can be transfered via HTTP. So one core idea is that when you want to receive (HTTP GET) data from a server you request the URL of the resource just the way you would request the HTML resource of a website and the server or the service sends you back (response message) what you requested. Or when you want to send data (HTTP POST) to a server/service you bundle the data into http message body and send it to the address of a resource.
+
+There is much to learn about RESTful webservices and APIs which is not part of this exercise but one main advantage over similar technologies is that it mainly uses the HTTP protocol and its messages so you do not need to learn yet another protocol.
 ### Doing
 
 1. Read through [all HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) and write down what they request, if their request has a body and if their response has a body
@@ -82,10 +85,8 @@ RESTful includes the word REST, which stands for **re**presentational **s**tate 
     ```
 3. Use `JSONObject` from `org.json`, `HttpPost`, `HttpResponse`,` HttpHeaders`, `CloseableHttpClient`, `StringEntity` from `org.apache.httpcomponents` and `BufferedReader` and `InputStreamReader` from your JDK to send a HTTP Post request to `https://jsonplaceholder.typicode.com/posts` which includes a JSON string including the `title` and `body` property from this resource and print out the response in the terminal.
 
-## WIP Exercise 03: Docker Basics & MariaDB Image
+## Exercise 03: Containering basics
 
-### WIP Docker Basics
 
-### WIP MariaDB with XAMPP
 
-## WIP Exercise 04: Spring Boot Basics
+## Exercise 04: MariaDB basics
