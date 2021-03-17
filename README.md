@@ -87,6 +87,43 @@ There is much to learn about RESTful webservices and APIs which is not part of t
 
 ## Exercise 03: Containering basics
 
+Operating system like windows and linux provide an abstraction of the underlying hardware and manage the resources of your computer for you. Each app/program that you start/run is loaded into the computer memory (RAM) (running app = process). This way you can run multiple apps at once and all processes exist in the memory of your computer and managed by your operating system (until they are ended/killed).
 
+Sometimes it is needed to somehow disconnect those processes from the underlying operating system a bit more. Also while developing software you often encounter the annoying situation where you need to setup the very same software libraries, additional needed services or other software to make your software working. Mostly you want to speed up those "setup" routines. Both, the stronger process encapsulation and the faster setup, is doable with containering. Container virtualisation technologies bundle each process within a container and then run each container as a process ontop of a host operating system and let each container connect to the underlying host operating system kernel. Depending on the container format / standart / technology there can be a container management daemon between the containrized apps and the host operating system like with [Docker](https://www.docker.com/). Another and further developed technologies are for example [Podman](https://podman.io/) or [LXD](https://linuxcontainers.org/lxd/introduction/) but most container technologies are availible only for Linux and Docker can nowadays be installed on Windows, too.
+The container technology is also one if not *the* the core technology for various cloud services and products, i.e. google cloud, microsoft azure, amazon web services and so on.
 
-## Exercise 04: MariaDB basics
+### Doing
+
+- Install docker on your computer
+  - Ubuntu:
+    ```
+    sudo apt install docker.io
+    sudo groupadd docker
+    sudo usermod -aG docker $USER
+    reboot
+    ```
+  - Windows and MacOS: https://docs.docker.com/get-docker/
+- Create MyApp.java
+  ```java
+  public class MyApp {
+    public static void main(String[] args) {
+        System.out.println("This is my app");
+    }
+  }
+  ```
+- create a file called `Dockerfile` and put the following lines inside
+  ```dockerfile
+  FROM openjdk:11
+  COPY . /usr/src/myapp
+  WORKDIR /usr/src/myapp
+  RUN javac MyApp.java
+  CMD ["java", "MyApp"]
+  ```
+- navigate to the directory where you've just created `MyApp.java` and `Dockerfile` and run the following command to build a docker container from the instructions inside the `Dockerfile` and with the java code inside `MyApp.java`:
+  ```bash
+  docker build -t my-java-container-image-name .
+  ```
+- now that your container image has been built you can run a new container instance built from this container image with
+  ```bash
+  docker run --name my-java-app my-java-container-image-name
+  ```
