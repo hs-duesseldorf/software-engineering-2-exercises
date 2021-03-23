@@ -98,7 +98,7 @@ RESTful [APIs](https://en.wikipedia.org/wiki/API) (application programming inter
         "id": 1,
         "title": "a very nice title",
         "body": "a very nice post body",
-        "children": [];
+        "children": []
       }
       ```
     The main advantage over XML is that the resulting information is a bit more readable for humans and also the number of characters is reduced.
