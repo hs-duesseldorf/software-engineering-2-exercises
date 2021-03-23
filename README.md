@@ -13,11 +13,11 @@ When you encounter a specific problem you want to solve with a Java program, you
 It would be nice to have a tool that automatically pulls those external Java libraries from the internet to your computer and make them accessible in your Java code for you.
 This would also reduce the amount of errors that occur while working together on a Java project, because now the project is build exactly the same way, no matter where.
 
-Thankfully those tools exist: Gradle and Maven.
+Thankfully those tools exist: [Gradle](https://gradle.org/) and [Maven](https://maven.apache.org/).
 We will focus on Maven here, but all of the tasks handled by Maven can also be achieved with Gradle.
 
 Maven projects only need a single [XML](https://en.wikipedia.org/wiki/XML) file to be described: [the project object model file, pom.xml](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html), which includes the external libraries in a `<dependencies>...</dependencies>` section, which consists of a list of `<dependency>...</dependency>` entries.
-There are [much more things](https://maven.apache.org/what-is-maven.html) you can do with Maven projects but we will reduce our focus on the dependency management here!
+There are [much more things](https://maven.apache.org/what-is-maven.html) you can do with Maven projects but we will focus on the dependency management here!
 
 ### HTTP - the protocol of the internet
 
@@ -55,16 +55,22 @@ As you can see from the `content-type` property of the response header, HTTP mes
     </dependency>
     ```
 
-2. Use ```BufferedReader``` and ```InputStreamReader``` which come already bundled with your JDK, ```CloseableHttpClient```, ```HttpGet``` and ```HttpResponse``` from the maven dependency `org.apache.httpcomponents` you've just included to call any website ([simple, primitive Web 1.0 website examples](https://gizmodo.com/23-ancient-web-sites-that-are-still-alive-5960831)) and return the HTTP response in the terminal.
+    **Help**: [How to create Java/Maven Projects in vscode](https://code.visualstudio.com/docs/java/java-project) | [How to create Maven projects in Eclipse](https://www.vogella.com/tutorials/EclipseMaven/article.html#exercise-create-a-new-maven-enabled-project-via-eclipse)
+
+2. Use ```BufferedReader``` and ```InputStreamReader``` which are already included in your java development kit (JDK) so you do not need to include them as dependencies in your `pom.xml` and ```CloseableHttpClient```, ```HttpGet``` and ```HttpResponse``` from the maven dependency `org.apache.httpcomponents` you've just included in your `pom.xml` to call any website ([simple, primitive Web 1.0 website examples](https://gizmodo.com/23-ancient-web-sites-that-are-still-alive-5960831)) and return the HTTP response in the terminal.
+
+    **Information 1**: We do not use the standard HTTP Client class from your JDK here, because otherwise we would need to handle closing the connections ourselves.
+
+    **Information 2**: you can use other classes in your java files with the `import` key word, outside of your own class definition.
 
 ## Exercise 02: Sending JSON with HTTP POST
 
-Another very popular use of HTTP in addition to reading websites is to build RESTful webservices that can be consumed by client applications, like for example a mobile app.
-RESTful includes the word REST, which stands for **re**presentational **s**tate **t**ransfer, and the suffix `ful`, which spoilers the fact that RESTful webservices can be less or more RESTful depending on how much they follow the REST standard and its [constraints](https://en.wikipedia.org/wiki/Representational_state_transfer).
+Another very popular use of HTTP in addition to reading websites is to build RESTful web-services that can be consumed by client applications, like for example a mobile app.
+RESTful includes the word REST, which stands for **re**presentational **s**tate **t**ransfer, and the suffix `ful`, which spoilers the fact that RESTful web-services can be less or more RESTful depending on how much they follow the REST standard and its [constraints](https://en.wikipedia.org/wiki/Representational_state_transfer).
 
-RESTful APIs focus on resources, whichs data can be transfered via HTTP. So one core idea is that when you want to receive (HTTP GET) data from a server you request the URL of the resource just the way you would request the HTML resource of a website and the server or the service sends you back (response message) what you requested. Or when you want to send data (HTTP POST) to a server/service you bundle the data into http message body and send it to the address of a resource.
+RESTful [APIs](https://en.wikipedia.org/wiki/API) (application programming interfaces) focus on resources, which data can be transferred via HTTP. So one core idea is that when you want to receive (HTTP GET) data from a server you request the address of the resource just the way you would request the HTML resource of a website and the server or the service sends you back (response message) what you requested. Or when you want to send data (HTTP POST) to a server/service you bundle the data into http message body and send it to the address of a resource.
 
-There is much to learn about RESTful webservices and APIs which is not part of this exercise but one main advantage over similar technologies is that it mainly uses the HTTP protocol and its messages so you do not need to learn yet another protocol.
+[There is much to learn about RESTful web-services](https://spring.io/guides/gs/rest-service/) and APIs which is not part of this exercise but one main advantage over similar technologies is that it mainly uses the HTTP protocol and its messages so you do not need to learn yet another protocol.
 ### Doing
 
 1. Read through [all HTTP methods](https://developer.mozilla.org/de/docs/Web/HTTP/Methods) and write down what they request, if their request has a body and if their response has a body
@@ -85,7 +91,21 @@ There is much to learn about RESTful webservices and APIs which is not part of t
     ```
 3. Use `JSONObject` from `org.json`, `HttpPost`, `HttpResponse`,` HttpHeaders`, `CloseableHttpClient`, `StringEntity` from `org.apache.httpcomponents` and `BufferedReader` and `InputStreamReader` from your JDK to send a HTTP Post request to `https://jsonplaceholder.typicode.com/posts` which includes a JSON string including the `title` and `body` property from this resource and print out the response in the terminal.
 
-## Exercise 03: Containering basics
+    **Information 1**: [A JSON file](https://en.wikipedia.org/wiki/JSON) lists a bunch of `"key": "value"` pairs...
+      ```json
+      {
+        "userId": 1,
+        "id": 1,
+        "title": "a very nice title",
+        "body": "a very nice post body",
+        "children": [];
+      }
+      ```
+    The main advantage over XML is that the resulting information is a bit more readable for humans and also the number of characters is reduced.
+
+    **Information 2**: The [JSONObject class](https://github.com/stleary/JSON-java) can bundle JSON files into a java objects.
+
+## Exercise 03: Docker Java container basics hands-on
 
 Operating system like windows and linux provide an abstraction of the underlying hardware and manage the resources of your computer for you. Each app/program that you start/run is loaded into the computer memory (RAM) (running app = process). This way you can run multiple apps at once and all processes exist in the memory of your computer and managed by your operating system (until they are ended/killed).
 
