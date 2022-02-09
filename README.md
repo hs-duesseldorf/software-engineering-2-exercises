@@ -150,4 +150,4 @@ The container technology is also one if not *the* the core technology for variou
 
 ## Further Exercises
 
-Further exercises are available in German here: [OneDrive Prof. Dr. Lux HSD](https://my.hs-duesseldorf.de/site/lux_w/_layouts/15/onedrive.aspx?csf=1&e=yIdSsr&FolderCTID=0x012000E51D335DB010414BA1B90B9EA9488B61&id=%2Fsite%2Flux%5Fw%2FDocuments%2FSP2010%2FSoftware%20Engineering%2FSoftware%20Engineering%20II%2F%C3%9Cbung)
+Further exercises are available in German here: [OneDrive Prof. Dr. Lux HSD](https://my.hs-duesseldorf.de/site/lux_w/_layouts/15/guestaccess.aspx?guestaccesstoken=ydeLVoTKSBkh%2fXo6j5ElhGWGkAO5Cs1mR%2b5rPXVYLNE%3d&folderid=2_095102c3fbbdc46f8a17dcdc5ad48a140&rev=1)
